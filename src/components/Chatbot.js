@@ -14,7 +14,7 @@ const Chatbot = () => {
     setQuery("");
 
     try {
-      const response = await fetch("http://localhost:5000/api/query/chat", {
+      const response = await fetch("https://santaan-bot-app-backend.onrender.com/api/query/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query }),
