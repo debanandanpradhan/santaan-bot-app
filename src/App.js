@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import AuthPage from "./pages/AuthPage";
+import ChatPage from "./pages/Chatpage";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import Sidebar from "./components/Sidebar"; // Importing the Sidebar
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <div className="app-container">
+                <Routes>
+                    <Route path="/" element={<AuthPage />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<Signup />} />
+
+                    {/* Main route with sidebar and chat page layout */}
+                    <Route
+                        path="/chat"
+                        element={
+                            <div className="chat-layout">
+                                <Sidebar /> {/* Sidebar on the left */}
+                                <div className="chat-content">
+                                    <ChatPage /> {/* Main queries/chat area */}
+                                </div>
+                            </div>
+                        }
+                    />
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
