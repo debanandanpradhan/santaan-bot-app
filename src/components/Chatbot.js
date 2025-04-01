@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Sidebar from "../components/Sidebar"; // Import Sidebar
 import "../App.css";  // Keep existing styles
+const API_BASE_URL = "https://santaan-bot-app-backend.onrender.com";
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([]); // Chatbot messages
@@ -14,7 +15,7 @@ const Chatbot = () => {
     setQuery("");
 
     try {
-      const response = await fetch("https://santaan-bot-app-backend.onrender.com/api/query/chat", {
+      const response = await fetch(`${API_BASE_URL}/api/query/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query }),
